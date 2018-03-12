@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Just Java</string>
+    <string name="Quantity" />
+    <string name="quantity">QUANTITY</string>
+    <string name="qtynumb">0</string>
+    <string name="Orderbuttn">ORDER</string>
+    <string name="price">$0</string>
+    <string name="add">+</string>
+    <string name="numberorder">2</string>
+    <string name="minus">-</string>
+    <string name="pricelbl">Price</string>
+    <string name="ordersummary">Order Summary</string>
+    <string name="whippedcream">whipped_cream_checkbox</string>
+    <string name="chocolate">chocolate_checkbox</string>
+</resources>
