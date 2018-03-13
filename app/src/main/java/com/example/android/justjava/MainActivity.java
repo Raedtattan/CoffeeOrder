@@ -10,6 +10,9 @@ package com.example.android.justjava;
 
 
 
+import android.content.Intent;
+import android.drm.DrmStore;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.util.jar.Attributes;
 
 /**
  * This app displays an order form to order coffee.
@@ -69,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given text on the screen.
      */
-    private void displayMessage(String message) {
+ /*   private void displayMessage(String message) {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
-    }
+    }*/
     private int calculatePrice( boolean addWhippedCream , boolean addChocolate){
         int baseprice = 5;
         if (addWhippedCream ){
@@ -87,7 +91,14 @@ public class MainActivity extends AppCompatActivity {
     private  void createOfOrderSummry(int number, boolean addWhippedCream , boolean addChocolate , String name) {
         int price = calculatePrice( addWhippedCream , addChocolate);
         String Message  ="Name :" +name+"\n"+"Add Whepped Cream:"+addWhippedCream+"\n"+"Add Chocolate:"+addChocolate+"\n"+"Quantaty:"+quantaty +"\n"+"Total:"+price+"\n"+"Thank You !" ;
-        displayMessage(Message);
+        //displayMessage(Message);
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+        intent.putExtra(intent.EXTRA_SUBJECT,"Just Java Order For :" + name);
+        intent.putExtra(intent.EXTRA_TEXT,Message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
 
